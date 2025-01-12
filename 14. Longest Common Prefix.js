@@ -11,23 +11,23 @@
 //   return matchedPrefix;
 // };
 
-var longestCommonPrefix = function (strs) {
-  let str = ' ' + strs.join(' ');
+// var longestCommonPrefix = function (strs) {
+//   let str = ' ' + strs.join(' ');
 
-  let matchedPrefix = '';
-  if (strs.length === 1) return strs[0];
+//   let matchedPrefix = '';
+//   if (strs.length === 1) return strs[0];
 
-  for (let i = 1; i < strs[0].length + 1; i++) {
-    let substr = strs[0].substring(0, i);
+//   for (let i = 1; i < strs[0].length + 1; i++) {
+//     let substr = strs[0].substring(0, i);
 
-    let res = [...str.matchAll(' ' + substr)].length;
+//     let res = [...str.matchAll(' ' + substr)].length;
 
-    if (res !== strs.length) {
-      return (matchedPrefix = substr.substring(0, substr.length - 1));
-    } else matchedPrefix = substr;
-  }
+//     if (res !== strs.length) {
+//       return (matchedPrefix = substr.substring(0, substr.length - 1));
+//     } else matchedPrefix = substr;
+//   }
 
-  return matchedPrefix;
-};
+//   return matchedPrefix;
+// };
 
 console.log(longestCommonPrefix(['aa', 'aa']));
