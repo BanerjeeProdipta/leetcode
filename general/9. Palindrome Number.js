@@ -3,12 +3,9 @@ var isPalindrome = function (x) {
   let original = x;
 
   while (x > 0) {
-    let digit = x % 10;
-    x = parseInt(x / 10);
-    reversed = reversed * 10 + digit;
+    let d = x % 10;
+    console.log(d);
   }
-
-  return original === reversed;
 };
 
 console.log(isPalindrome(1221)); // true

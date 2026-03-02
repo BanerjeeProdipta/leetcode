@@ -1,0 +1,28 @@
+{
+  "colHeader": [
+    {
+      "name": "Truely",
+      "tooltip": "test",
+      "order": 0
+    },
+    {
+      "name": "Holafly",
+      "tooltip": "",
+      "order": 0
+    }
+  ],
+  "row": [
+    {
+      "value": "One eSim for all destinations",
+      "order": 0,
+      "tooltip": "blah blah",
+      "comapanyWise": "true,false,true"
+    },
+    {
+      "value": "Sharable data",
+      "order": 1,
+      "tooltip": "",
+      "comapanyWise": "true,false,true"
+    }
+  ]
+}
