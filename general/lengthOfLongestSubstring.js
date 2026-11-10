@@ -1,33 +1,30 @@
-function lengthOfLongestSubstring(s) {
-  let map = {};
-  let maxLength = 0;
-  let start = 0;
+var lengthOfLongestSubstring = function (s) {
+  let longest = 0;
+  let leftIndex = 0;
+  const charSet = new Set();
 
   for (let i = 0; i < s.length; i++) {
-    if (map[s[i]] !== undefined) {
-      start = Math.max(start, map[s[i]] + 1);
+    while (charSet.has(s[i])) {
+      charSet.delete(s[leftIndex]);
+      leftIndex++;
+      console.log({ i, leftIndex, char: s[i] });
     }
-
-    map[s[i]] = i;
-    maxLength = Math.max(maxLength, i - start + 1);
+    charSet.add(s[i]);
+    longest = Math.max(longest, i - leftIndex + 1);
+    // console.log({ i, leftIndex, i, longest });
   }
+  console.log("RESULT: ", s, longest);
+  return longest;
+};
 
-  return maxLength;
-}
+let s1 = "abcabcbb";
+let s2 = "bbbbb";
+let s3 = "pwwkew";
+let s4 = "dvdf";
+let s5 = "abba";
 
-let s = 'dvdf';
-let s1 = ' ';
-let s2 = 'au';
-let s3 = 'bbb';
-let s4 = 'pwwwkew';
-let s5 = 'cdd';
-let s6 = 'abcabcbb';
-let s7 = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdefghijk';
-console.log(s, lengthOfLongestSubstring(s));
-console.log(s1, lengthOfLongestSubstring(s1));
-console.log(s2, lengthOfLongestSubstring(s2));
-console.log(s3, lengthOfLongestSubstring(s3));
-console.log(s4, lengthOfLongestSubstring(s4));
-console.log(s5, lengthOfLongestSubstring(s5));
-console.log(s6, lengthOfLongestSubstring(s6));
-console.log(s7, lengthOfLongestSubstring(s7));
+lengthOfLongestSubstring(s1);
+lengthOfLongestSubstring(s2);
+lengthOfLongestSubstring(s3);
+lengthOfLongestSubstring(s4);
+lengthOfLongestSubstring(s5);

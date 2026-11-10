@@ -1,21 +1,30 @@
-function longestPalindrome(s) {
-  let hashmap = {};
-  let longest = 0;
-  let hasOdd = false;
-  for (let i = 0; i < s.length; i++) {
-    hashmap[s[i]] = (hashmap[s[i]] || 0) + 1;
-  }
+var longestPalindrome = function (s) {
+  let start = 0;
+  let maxLength = 0;
 
-  for (let char in hashmap) {
-    if (hashmap[char] % 2 === 0) {
-      longest += hashmap[char];
-    } else {
-      longest += hashmap[char] - 1;
-      hasOdd = true;
+  function expand(left, right) {
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      const length = right - left + 1;
+
+      if (length > maxLength) {
+        maxLength = length;
+        start = left;
+      }
+
+      left--;
+      right++;
     }
   }
-  return hasOdd ? longest + 1 : longest;
-}
 
-let s = 'abccccdd';
+  for (let i = 0; i < s.length; i++) {
+    expand(i, i); // odd
+    expand(i, i + 1); // even
+  }
+};
+
+// Output: "bab";
 console.log(longestPalindrome(s));
+
+let s2 = "cbbd";
+// Output: "bb";
+console.log(longestPalindrome(s2));

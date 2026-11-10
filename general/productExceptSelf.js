@@ -1,23 +1,21 @@
-function productExceptSelf(nums) {
-  let product = 1;
-  let res = Array(nums.length).fill(1);
+var productExceptSelf = function (nums) {
+  let res = Array.from({ length: nums.length }).fill(1); //{ res: [ 1, 1, 1, 1 ] }
+  let product = nums[0];
 
-  for (let i = 0; i < nums.length - 1; i++) {
-    product = nums[i] * product;
-    res[i + 1] = product;
+  for (let i = 0; i < nums.length; i++) {
+    res[i] = product;
+    product *= nums[i];
   }
+
+  // { res: [ 1, 1, 2, 6 ] }
   product = 1;
-
-  for (let i = nums.length - 1; i > 0; i--) {
-    product = nums[i] * product;
-    res[i - 1] = product * res[i - 1];
+  for (let i = nums.length - 1; i >= 0; i--) {
+    res[i] *= product;
+    console.log(product);
+    product *= nums[i];
   }
-  return res;
-}
-let nums = [1, 2, 4, 6];
-// 1  1  2 8
-// 48 24 6 1
+  console.log({ res });
+};
 
-// 48 24 12 8
-// Output: [48,24,12,8]
-console.log(productExceptSelf(nums));
+let nums = [1, 2, 3, 4];
+productExceptSelf(nums);
